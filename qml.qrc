@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/Resources">
+        <file>BtnAlbum.qml</file>
+        <file>main.qml</file>
+        <file>main.js</file>
+    </qresource>
+    <qresource prefix="/Entity">
+        <file>Playlist.js</file>
+        <file>Album.js</file>
+        <file>Song.js</file>
+        <file>Lyrics.js</file>
+        <file>AlbumType.js</file>
+        <file>SongType.js</file>
+    </qresource>
+    <qresource prefix="/Repository">
+        <file>AlbumRepository.js</file>
+    </qresource>
+    <qresource prefix="/Model">
+        <file>Exception.js</file>
+        <file>String.js</file>
+        <file>Array.js</file>
+        <file>Core.js</file>
+        <file>Container.js</file>
+    </qresource>
+    <qresource prefix="/Database">
+        <file>Connection.js</file>
+        <file>Manager.js</file>
+        <file>Repository.js</file>
+        <file>QueryBuilder.js</file>
+    </qresource>
+    <qresource prefix="/Core">
+        <file>Container.js</file>
+        <file>Loader.js</file>
+        <file>Kernel.js</file>
+    </qresource>
+</RCC>
