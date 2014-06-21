@@ -7,25 +7,26 @@ var Kernel = function(){
 }
 
 Kernel.prototype = {
-    entities: {
+    /*entities: {
         Album: '../Entity/Album.js'
-    },
+    },*/
     getContainer: function(){
         return this.container;
     },
-    getEntities: function(){
+    /*getEntities: function(){
         return this.entities;
     },
     setEntity: function(entity, object) {
         this.entities[entity] = object;
     },
     includeEntities: function(){
-        for(key in this.getEntities()){
+        var entities = this.getEntities();
+        entities.forEach(function(value, key){
             //include entity
-            Qt.include(this.getEntities()[key]);
+            Qt.include(entities[key]);
             this.setEntity(key, window[key]);
-        }
-    },
+        });
+    },*/
     setupDatabase: function(){
         this.getContainer().get('dbManager').setupDatabase(this.getEntities());
     }

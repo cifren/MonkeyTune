@@ -12,7 +12,7 @@ Album.prototype = {
     },
     tableName: 'album',
     entityId: 'id',
-    repository: '../Repository/AlbumRepository.js',
+    repository: 'AlbumRepository',
     id: null,
     name: null,
     albumTypeId: null,

@@ -8,9 +8,13 @@ Repository.prototype = {
         return
     },
     findAll: function(){
+        var queryBuilder = this.connection.createQueryBuilder();
+        var all = queryBuilder
+            .select('*')
+            .from(entityName, 'a')
+            .getResult();
 
-
-        return
+        return all;
     },
     findBy: function(){
 

@@ -11,8 +11,9 @@ QueryBuilder.prototype = {
         this.select = select;
         return this;
     },
-    from: function(from){
+    from: function(from, aliasFrom){
         this.from = from;
+        this.aliasFrom = aliasFrom;
         return this;
     },
     where: function(where){

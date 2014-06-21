@@ -1,14 +1,14 @@
-Qt.include("../Database/Connection.js")
-Qt.include("../Database/Manager.js")
 
+console.log('container');
 var Container = function(){
+    console.log('Container constructor');
     var connection = new Connection();
     var manager = new Manager(connection);
-    services['dbManager'] = manager;
+    this.services['dbManager'] = manager;
 };
 
 Container.prototype = {
-    services: [],
+    services: {},
     get: function(service){
         return this.services[service];
     }

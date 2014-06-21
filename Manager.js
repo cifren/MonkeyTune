@@ -1,5 +1,6 @@
 Qt.include("../Database/Repository.js")
 
+console.log('Manager file');
 var Manager = function(connection){
     this.connection = connection;
 }
@@ -9,9 +10,9 @@ Manager.prototype = {
         var repository = null;
         if(windows[entityName]['repository']){
             //include repository if exist
-            if(window[key].repository){
+            /*if(window[key].repository){
                 Qt.include(window[entityName]['repository']);
-            }
+            }*/
             repository= new windows[entityName]['repository'](connection, entityName);
         }else{
             repository = new Repository(connection, entityName);

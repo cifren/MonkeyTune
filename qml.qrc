@@ -16,17 +16,16 @@
         <file>AlbumRepository.js</file>
     </qresource>
     <qresource prefix="/Model">
-        <file>Exception.js</file>
         <file>String.js</file>
         <file>Array.js</file>
         <file>Core.js</file>
-        <file>Container.js</file>
     </qresource>
     <qresource prefix="/Database">
-        <file>Connection.js</file>
         <file>Manager.js</file>
         <file>Repository.js</file>
         <file>QueryBuilder.js</file>
+        <file>Exception.js</file>
+        <file>Connection.js</file>
     </qresource>
     <qresource prefix="/Core">
         <file>Container.js</file>

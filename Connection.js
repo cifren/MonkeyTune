@@ -1,19 +1,15 @@
-.import QtQuick.LocalStorage 2.0 as Sql
-Qt.include('QueryBuilder.js')
-
-//constructor
+console.log('connection file');
 var Connection = function(){
+    console.log('connection constructor');
     this.connection = this.getConnection();
 };
 
-
-// public (shared across instances)
 Connection.prototype = {
     createQueryBuilder: function(entityName){
         return new QueryBuilder(this, entityName);
     },
     getConnection: function(){
-        connection = Sql.LocalStorage.openDatabaseSync("MonkeyTune", "1.0", "The Example QML SQL!", 1000000);
+        var connection = Sql.LocalStorage.openDatabaseSync("MonkeyTune", "1.0", "The Example QML SQL!", 1000000);
         return connection;
     },
     flush: function(dbObj){
@@ -84,7 +80,47 @@ Connection.prototype = {
         this.executeQuery(sql);
     },
     executeQueryBuilder: function(queryBuilder){
+        var sql = null;
 
-        return
+        //convert entityName into table name
+        var tableName = window[queryBuilder.from].tableName;
+
+        var where = null;
+        if(queryBuilder.where){
+            where = " WHERE " + queryBuilder.where;
+        }
+
+        sql = "SELECT " + queryBuilder.select + " FROM tableName " + queryBuilder.aliasFrom
+            + where;
+
+        var rs = this.executeQuery();
+
+        var aryEntities = this.mapDbResultWithEntity(queryBuilder.from, rs.rows);
+
+        return aryEntities;
+    },
+    mapDbResultWithEntity: function(entityName, rowResults){
+        var aryEntity = {};
+
+        var rawMapping = window[entityName].mapping;
+
+        var mapping = {};
+        for (key in rawMapping){
+            mapping[key] = rawMapping[key]['name'];
+        }
+        mapping = array_flip(mapping);
+
+        for (key in rowResults){
+            var entity = new window[entityName]();
+            var columns = rowResults[key];
+            for(keyField in columns){
+                entity[mapping[keyField]] = columns[keyField];
+            }
+            aryEntity.push(entity);
+        }
+
+        return aryEntity;
     }
+
 }
+
